@@ -38,7 +38,7 @@ FstabEntry* GetEntryForPath(Fstab* fstab, const std::string& path) {
     if (path.empty()) return nullptr;
     std::string str(path);
     while (true) {
-        auto entry = GetEntryForMountPointTryDetectFs(fstab, str);
+        auto entry = GetEntryForMountPoint(fstab, str);
         if (entry != nullptr) return entry;
         str = android::base::Dirname(str);
         if (!str.compare(".") || !str.compare("/")) break;
